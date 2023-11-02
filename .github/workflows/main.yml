@@ -1,0 +1,20 @@
+name: Error Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Begin Error Check
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Initiating Error Check
+      run: |
+        mypy --ignore-missing-imports movies
